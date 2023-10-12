@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  cms:
+    build: .
+    restart: "unless-stopped"
+    container_name: cms
+    expose:
+      - "8090"
+
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./pb_data:/usr/src/app/pb_data
