@@ -3,7 +3,7 @@
 .DEFAULT_GOAL := all
 
 MAIN := cms/main.go
-DOCKER_TAG := ghcr.io/climactivity/cy-cms-2:lates
+DOCKER_TAG := ghcr.io/climactivity/climate-friday-backend:latest
 
 
 all: dependencies frontend serve
