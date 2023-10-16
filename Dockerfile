@@ -8,7 +8,7 @@ RUN npm install
 COPY . . 
 RUN npm run build
 
-FROM golang:1.19.1
+FROM golang:1.20.1
 
 WORKDIR /usr/src/app
 
