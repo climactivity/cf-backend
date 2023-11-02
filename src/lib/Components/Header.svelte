@@ -19,28 +19,27 @@
 	$: bgCastShadow = y > bgShadowOffset;
 </script>
 
-<header class="h-32">
-	<WarmingstripesBackground adaptAngle opacity={ 1 - bgOpacity } />
-	<div class="fixed  z-20       
+<header class="h-12">
+	<WarmingstripesBackground adaptAngle opacity={1 - bgOpacity} />
+	<div
+		class="fixed z-20
 	left-0 right-0 top-0 px-4 pt-5 pb-4 overflow-clip
-		{bgCastShadow || $menuOpen ? 'shadow-md' : ''}">
-		<div
-		style="grid-template-columns: 5rem 1fr 10rem;"
-		class="grid grid-flow-col items-stretch  max-w-xl mx-auto"
+		{bgCastShadow || $menuOpen ? 'shadow-md' : ''}"
 	>
-		{#if $currentUser}
-			<MenuButton/>
-			<div/>
-			<StreakCounter /> 
-		{/if}
-
-	</div>
-	<WarmingstripesBackground opacity={bgCastShadow ? 1 : 0}   />
-
-
+		<div
+			style="grid-template-columns: 5rem 1fr 10rem;"
+			class="grid grid-flow-col items-stretch max-w-xl mx-auto"
+		>
+			{#if $currentUser}
+				<MenuButton />
+				<div />
+				<StreakCounter />
+			{/if}
+		</div>
+		<WarmingstripesBackground opacity={bgCastShadow ? 1 : 0} />
 	</div>
 	<!-- <div class="h-24" /> -->
-	<SideNavigationMenu/>
+	<SideNavigationMenu />
 </header>
 
 <svelte:window bind:scrollY={y} />

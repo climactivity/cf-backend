@@ -31,13 +31,23 @@
 		opacity: var(--opacity, 1);
 		background-blend-mode: overlay;
 		background-size: 100%;
-		background-repeat: inherit;
+		background-repeat: no-repeat;
 		--background-color: rgba(255, 255, 255, 1);
 		height: 20rem;
 	}
+	// Hide the one pixel error that chrome renders outside the bg gradient because gecko >> blink
+	.ws-gradient::after {
+		content: '';
+		position: absolute;
+		bottom: -5px;
+		left: 0;
+		right: 0;
+		height: 10px;
+		background-color: var(--background-color);
+	}
 	.ws-gradient-top {
 		background-image: url('/warming_stripes.png'),
-			linear-gradient(var(--angle), var(--background-color) 50%, rgba(131, 58, 180, 0) 100%);
+			linear-gradient(var(--angle), var(--background-color) 70%, rgba(131, 58, 180, 0) 100%);
 	}
 
 	.ws-gradient-bottom {

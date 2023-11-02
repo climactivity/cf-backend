@@ -5,6 +5,8 @@ services:
     image: ghcr.io/climactivity/climate-friday-backend:latest
     restart: 'always'
     container_name: cms
+    environment:
+      - VITE_PB_BASE_URL=/
     expose:
       - '8088'
     ports:

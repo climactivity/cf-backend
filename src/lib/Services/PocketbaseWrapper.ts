@@ -1,7 +1,10 @@
 import PocketBase from "pocketbase"; 
 import { writable } from "svelte/store";
 
-const pb = new PocketBase("http://127.0.0.1:8090"); 
+const pocketbaseUrl = import.meta.env.VITE_PB_BASE_URL
+
+
+const pb = new PocketBase(pocketbaseUrl); 
 // pb.autoCancellation(false); //this messes up image loading
 
 

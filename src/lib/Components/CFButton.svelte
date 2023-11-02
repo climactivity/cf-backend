@@ -5,11 +5,13 @@
 	export let share = false;
 	export let rounded = false;
 	export let disabled = false;
-	export let onclick: Function = () => console.warn('No onclick handler defined!');
+	export let onclick = (
+		event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }
+	): any => console.warn('No onclick handler defined!');
 </script>
 
 <button
-	on:click={onclick()}
+	on:click={onclick}
 	{disabled}
 	class="
     px-8

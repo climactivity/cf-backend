@@ -1,10 +1,15 @@
 <script>
 	import CfHeading from '$lib/Components/CFHeading.svelte';
 	import ClimateFriday from '$lib/Components/ClimateFriday.svelte';
+	import TopSpacer from '$lib/Components/TopSpacer.svelte';
 </script>
 
+<TopSpacer />
+
 <!-- TODO make the background more like the mockup -->
-<h1 class="text-4xl font-semibold font-serif -rotate-12 pt-8 pb-16">Das Commitment <ClimateFriday/></h1>
+<h1 class="text-4xl font-semibold font-serif -rotate-12 pt-8 pb-16">
+	Das Commitment <ClimateFriday />
+</h1>
 
 <div>
 	Freitags zeigen wir Flagge für Tempo und Gerechtigkeit beim Klimaschutz. Wir fordern dies von den
@@ -22,6 +27,6 @@
 
 <style lang="scss">
 	li {
-		@apply ml-8 my-4
+		@apply ml-8 my-4;
 	}
 </style>

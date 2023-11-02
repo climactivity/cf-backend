@@ -11,20 +11,22 @@
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
-		if (!($currentUser)) {
+		if (!$currentUser) {
 			goto('/app/auth');
 		}
 	});
 </script>
 
+<div class="h-36" />
+
 <main class="flex flex-col gap-4">
 	<CfSection>
 		<!-- <span slot="heading">Hello</span> -->
 		<div>Teilnehmer:innen am letzten Freitag:<br /> <CountUp number={1200} /></div>
-		<div>Aus deinem PLZ-Gebiet waren es<br /> <CountUp number={234}/> </div>
+		<div>Aus deinem PLZ-Gebiet waren es<br /> <CountUp number={234} /></div>
 	</CfSection>
-	<FridayCountdown/>
+	<FridayCountdown />
 
-	<CfFridayInteraction/>
-	<BlogEmbed/>
+	<CfFridayInteraction />
+	<BlogEmbed />
 </main>

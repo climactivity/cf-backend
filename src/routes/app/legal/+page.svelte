@@ -1,12 +1,14 @@
 <script>
-	import CfHeading from "$lib/Components/CFHeading.svelte";
-
+	import CfHeading from '$lib/Components/CFHeading.svelte';
+	import TopSpacer from '$lib/Components/TopSpacer.svelte';
 </script>
+
+<TopSpacer />
+
 <CfHeading>Angaben gemäß § 5 TMG</CfHeading>
 
 <div class=" ">
 	<div class="prose prose-headings:text-base mx-auto pb-20">
-
 		<p>
 			climactivity e. V. Ritterhuder Str. 23 28237 Bremen Tel.: 0421 – 1676 7749 Registergericht:
 			Amtsgericht BremenVereinsregister: VR 8275 HB Registergericht: Amtsgericht Bremen Vertreten
