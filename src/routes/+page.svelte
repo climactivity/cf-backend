@@ -1,14 +1,16 @@
-<script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+<script lang="ts">
+	import { goto } from '$app/navigation';
+	import { currentUser } from '$lib/Services/PocketbaseWrapper';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		console.log($currentUser);
+		if ($currentUser) {
+			goto('/app');
+		} else {
+			goto('/welcome');
+		}
+	});
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
-
-<section>
-	<h1>This will be the Marketing page</h1>
-</section>
+<h1>This will be the app</h1>

@@ -1,0 +1,1 @@
+<h1 class="font-serif font-bold uppercase text-lg"><slot/></h1>

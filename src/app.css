@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+	--ws_angle: -12deg;
+	--x-pad: 1.5rem;
+}

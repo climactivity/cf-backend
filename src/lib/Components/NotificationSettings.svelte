@@ -1,0 +1,17 @@
+<script lang="ts">
+	import CfButton from "./CFButton.svelte";
+	import Modal from "./Modal.svelte";
+	import NotificationSettingsModal from "./NotificationSettingsModal.svelte";
+    let modal: Modal;
+</script>
+<div>
+    NotificationSettings
+    <CfButton onclick={() => modal.show()}>
+        Ich bin dabei am nächsten Freitag 
+    </CfButton>
+</div>
+
+
+<Modal isModalOpen={true}  bind:this={modal}>
+    <NotificationSettingsModal/>
+</Modal>
