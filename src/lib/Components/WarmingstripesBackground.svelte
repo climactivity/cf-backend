@@ -14,7 +14,7 @@
 	onMount(() => {
 		if (adaptAngle) {
 			onresize = (_event) => {
-				if (!adaptAngle) return;
+				//if (!adaptAngle) return;
 				aspectRationToAngle(window.innerWidth / window.innerHeight);
 			};
 		}
@@ -23,7 +23,7 @@
 
 <div
 	style="--opacity: {opacity}; --angle: {angle}deg"
-	class="absolute left-0 top-0 right-0 ws-gradient ws-gradient-top -z-50 w-full"
+	class="absolute left-0 top-0 right-0 h-40 ws-gradient ws-gradient-top -z-50"
 />
 
 <style lang="scss">
@@ -31,7 +31,7 @@
 		opacity: var(--opacity, 1);
 		background-blend-mode: overlay;
 		background-size: 100%;
-		background-repeat: no-repeat;
+		background-repeat: repeat-y;
 		--background-color: rgba(255, 255, 255, 1);
 		height: 20rem;
 	}
@@ -47,7 +47,7 @@
 	}
 	.ws-gradient-top {
 		background-image: url('/warming_stripes.png'),
-			linear-gradient(var(--angle), var(--background-color) 70%, rgba(131, 58, 180, 0) 100%);
+			linear-gradient(var(--angle), var(--background-color) 50%, rgba(131, 58, 180, 0) 100%);
 	}
 
 	.ws-gradient-bottom {

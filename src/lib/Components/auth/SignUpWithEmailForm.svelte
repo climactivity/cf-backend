@@ -39,7 +39,7 @@
 	<h1 class="font-serif text-center font-bold text-2xl text-neutral-900">Account anlegen</h1>
 	<span class="font-sans text-center text-neutral-800"
 		>Schon dabei? <a href="/app/auth/withEmail" class="text-primary-500 hover:text-primary-700"
-			>Account anlegen</a
+			>Anmelden</a
 		></span
 	>
 </div>

@@ -25,8 +25,8 @@ setInterval(() => {
 }, timerAccuracy);
 
 export const isFriday = () => {
-    return false
-    // return getDayOfWeek() === FRIDAY;
+    //return false
+    return getDayOfWeek() === FRIDAY;
 }
 
 export const FRIDAY = 5;

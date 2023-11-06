@@ -2,7 +2,7 @@
 
 .DEFAULT_GOAL := all
 
-MAIN := cms/main.go
+MAIN := ./cms
 DOCKER_TAG := ghcr.io/climactivity/climate-friday-backend:latest
 
 

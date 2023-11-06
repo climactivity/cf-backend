@@ -28,7 +28,7 @@ func defaultPublicDir() string {
 	return filepath.Join(os.Args[0], "../pb_public")
 }
 
-func ServeCMS(fileSystem fs.FS, disablePathUnescaping bool) echo.HandlerFunc {
+func serveCMS(fileSystem fs.FS, disablePathUnescaping bool) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		p := c.PathParam("*")
 		if !disablePathUnescaping { // when router is already unescaping we do not want to do is twice
@@ -68,9 +68,13 @@ func main() {
 		"the directory to serve static files",
 	)
 
+	//add notification scheduler
+	app.OnBeforeServe().Add(handleNotifications(app))
+
+	// add custom routes
 	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
 		// serves static files from the provided public dir (if exists)
-		e.Router.GET("/*", ServeCMS(os.DirFS(publicDirFlag), false))
+		e.Router.GET("/*", serveCMS(os.DirFS(publicDirFlag), false))
 
 		return nil
 	})

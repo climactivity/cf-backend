@@ -1,6 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import CfButton from '$lib/Components/CFButton.svelte';
+	import TopSpacer from '$lib/Components/TopSpacer.svelte';
 	import { pb } from '$lib/Services/PocketbaseWrapper';
 	import { onMount } from 'svelte';
 
@@ -11,6 +12,7 @@
 	});
 </script>
 
+<TopSpacer logo={true} />
 <div class="flex flex-col h-full">
 	<div>
 		<h1>Bitte trage dich als Mitmacherin bzw. Mitmacher ein,</h1>
