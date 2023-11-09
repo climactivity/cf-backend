@@ -10,9 +10,16 @@ import (
 	"github.com/pocketbase/pocketbase/models"
 	"github.com/pocketbase/pocketbase/tools/cron"
 	"github.com/pocketbase/pocketbase/tools/mailer"
+	"github.com/pocketbase/pocketbase/tools/template"
 )
 
-func sendEmailNotificationToUser(user *models.Record, app *pocketbase.PocketBase) error {
+func sendEmailNotificationToUser(user *models.Record, template *template.Renderer, app *pocketbase.PocketBase) error {
+
+	html, err := template.Render(map[string]any{"AppUrl": app.Settings().Meta.AppUrl})
+
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	message := &mailer.Message{
 		From: mail.Address{
@@ -20,11 +27,18 @@ func sendEmailNotificationToUser(user *models.Record, app *pocketbase.PocketBase
 			Name:    app.Settings().Meta.SenderName,
 		},
 		To:      []mail.Address{{Address: user.Email()}},
-		Subject: "YOUR_SUBJECT...",
-		HTML:    "YOUR_HTML_BODY...",
-		// bcc, cc, attachments and custom headers are also supported...
+		Subject: "#ClimateFriday Erinnerung",
+		HTML:    html,
+		Text: `Hi, 
+
+		  Auch diese Woche machen wieder viele Menschen beim #ClimateFriday> mit.
+		  Bist Du diese Woche auch dabei?
+
+		  Viele Grüße,
+		  das #ClimateFriday-Team
+		`,
 	}
-	// app.Settings().Meta.
+
 	log.Default().Println("Sending ", message.From, message.To, message.Subject)
 
 	return app.NewMailClient().Send(message)
@@ -40,8 +54,10 @@ func notifyEmailSubscribers(app *pocketbase.PocketBase) error {
 		log.Fatal(err)
 	}
 
+	htmlMail := template.NewRegistry().LoadFiles("views/HTMLEmailReminderTemplate.html")
+
 	for _, record := range records {
-		sendEmailNotificationToUser(record, app)
+		sendEmailNotificationToUser(record, htmlMail, app)
 		if err != nil {
 			log.Default().Println(err)
 		}
@@ -77,8 +93,9 @@ func handleNotifications(app *pocketbase.PocketBase) func(e *core.ServeEvent) er
 	return func(e *core.ServeEvent) error {
 		scheduler := cron.New()
 
-		// prints "Hello!" every 2 minutes
-		scheduler.MustAdd("hello", "*/2 * * * *", func() {
+		// see https://crontab.guru/#0_18_*_*_4
+		// “At 18:00 on Thursday.”
+		scheduler.MustAdd("hello", "0 18 * * 4", func() {
 			notifyEmailSubscribers(app)
 			notifyPushSubscribers(app)
 		})
