@@ -6,7 +6,6 @@
 </script>
 
 <div>
-	NotificationSettings
 	<CfButton onclick={() => modal.show()}>Ich bin dabei am nächsten Freitag</CfButton>
 </div>
 

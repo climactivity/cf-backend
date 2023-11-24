@@ -1,3 +1,4 @@
 {
-    "cSpell.language": "en,de-DE,de"
+	"cSpell.language": "en,de-DE,de",
+	"livePreview.defaultPreviewPath": "/views/HTMLEmailReminderTemplate.html"
 }

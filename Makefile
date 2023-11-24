@@ -26,9 +26,10 @@ collections:
 	go run $(MAIN) migrate collections
 
 run-container:
-	docker-compose up -d
+	docker-compose up --build -d
 
 build-container: 
 	docker build . -f ./Dockerfile --tag $(DOCKER_TAG)
-	docker push $(DOCKER_TAG)
 
+push-container: build-container
+	docker push $(DOCKER_TAG)
