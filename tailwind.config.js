@@ -72,6 +72,29 @@ export default {
 			}
 		}
 	},
+	safelist: [
+		'bg-success-100',
+		'bg-success-200',
+		'bg-success-300',
+		'bg-success-500',
+		'bg-success-700',
+		'bg-success-800',
+		'bg-success-900',
+		'border-success-100',
+		'border-success-200',
+		'border-success-300',
+		'border-success-500',
+		'border-success-700',
+		'border-success-800',
+		'border-success-900',
+		'text-success-100',
+		'text-success-200',
+		'text-success-300',
+		'text-success-500',
+		'text-success-700',
+		'text-success-800',
+		'text-success-900',
+	],
 	plugins: [require('daisyui'), require('@tailwindcss/typography')],
 	daisyui: {
 		themes: ['light'], // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]

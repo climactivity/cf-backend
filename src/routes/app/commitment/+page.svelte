@@ -7,7 +7,7 @@
 <TopSpacer />
 
 <!-- TODO make the background more like the mockup -->
-<h1 class="text-4xl font-semibold font-serif -rotate-12 pt-8 pb-16">
+<h1 class="text-4xl font-semibold font-serif -rotate-6 pt-8 pb-16 text-center">
 	Das Commitment <ClimateFriday />
 </h1>
 

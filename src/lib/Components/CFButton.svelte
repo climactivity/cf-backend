@@ -66,5 +66,8 @@
 	{/if}
 </button>
 
-<style lang="scss">
+<style>
+	button {
+		-webkit-tap-highlight-color: transparent;
+	}
 </style>

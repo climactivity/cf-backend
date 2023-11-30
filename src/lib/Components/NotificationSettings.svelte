@@ -6,9 +6,9 @@
 </script>
 
 <div>
-	<CfButton onclick={() => modal.show()}>Ich bin dabei am nächsten Freitag</CfButton>
+	<CfButton onclick={() => modal.show()}>Ich bin am nächsten Freitag dabei!</CfButton>
 </div>
 
 <Modal bind:this={modal}>
-	<NotificationSettingsModal />
+	<NotificationSettingsModal modal={modal} />
 </Modal>
