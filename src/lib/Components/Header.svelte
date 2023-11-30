@@ -23,7 +23,7 @@
 	<WarmingstripesBackground adaptAngle opacity={1 - bgOpacity} />
 	<div
 		class="fixed z-20
-	left-0 right-0 top-0 px-4 pt-5 pb-4 overflow-clip
+	left-0 right-0 px-4 pt-5 pb-4 overflow-clip top-safe
 		{bgCastShadow || $menuOpen ? 'shadow-md' : ''}"
 	>
 		<div
@@ -49,5 +49,9 @@
 		header {
 			padding: 12px 0;
 		}
+	}
+
+	.top-safe {
+		top: 24px;
 	}
 </style>

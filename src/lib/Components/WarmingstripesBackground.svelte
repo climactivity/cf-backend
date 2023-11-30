@@ -47,7 +47,7 @@
 	}
 	.ws-gradient-top {
 		background-image: url('/warming_stripes.png'),
-			linear-gradient(var(--angle), var(--background-color) 70%, rgba(131, 58, 180, 0) 100%);
+			linear-gradient(var(--angle), var(--background-color) 60%, rgba(131, 58, 180, 0) 100%);
 	}
 
 	.ws-gradient-bottom {
