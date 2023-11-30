@@ -9,6 +9,7 @@
 	import ParticipateForm from '$lib/Components/ParticipateForm.svelte';
 	import { currentUser, pb } from '$lib/Services/PocketbaseWrapper';
 	import { onMount } from 'svelte';
+	import StatCTABlock from "$lib/Components/StatCTABlock.svelte";
 
 	onMount(async () => {
 		if (!$currentUser) {
@@ -20,11 +21,7 @@
 <div class="h-36" />
 
 <main class="flex flex-col gap-4">
-	<CfSection>
-		<!-- <span slot="heading">Hello</span> -->
-		<div>Teilnehmer:innen am letzten Freitag:<br /> <CountUp number={1200} /></div>
-		<div>Aus deinem PLZ-Gebiet waren es<br /> <CountUp number={234} /></div>
-	</CfSection>
+	<StatCTABlock/>
 	<FridayCountdown />
 
 	<CfFridayInteraction />

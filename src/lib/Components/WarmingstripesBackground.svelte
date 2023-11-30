@@ -3,10 +3,10 @@
 	import { onMount } from 'svelte';
 	export let adaptAngle = false;
 	export let opacity = 1.0;
-	export let angle = -12;
+	export let angle = -5;
 
 	const aspectRationToAngle = (ratio: number) => {
-		angle = mapToRange(ratio, 0.5, 2.0, -12, -5);
+		angle = mapToRange(ratio, 0.5, 2.0, -5, -12);
 	};
 
 	/* Do horrible things with the window aspect ratio to figure out if we should 
@@ -31,7 +31,7 @@
 		opacity: var(--opacity, 1);
 		background-blend-mode: overlay;
 		background-size: 100%;
-		background-repeat: repeat-y;
+		background-repeat: repeat;
 		--background-color: rgba(255, 255, 255, 1);
 		height: 20rem;
 	}

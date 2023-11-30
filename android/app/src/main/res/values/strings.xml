@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">climatefriday</string>
+    <string name="title_activity_main">climatefriday</string>
+    <string name="package_name">de.climatefriday.app</string>
+    <string name="custom_url_scheme">de.climatefriday.app</string>
+</resources>

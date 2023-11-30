@@ -12,7 +12,7 @@
 
 {#if !isFriday()} 
 <div>
-	Noch {days} Tage {hours} Stunden {minutes} Minuten und {seconds} Sekunden Bis zum nächsten <ClimateFriday
+	Noch {days} Tage {hours} Stunden {minutes} Minuten und {seconds} Sekunden bis zum nächsten <ClimateFriday
 	/>
 </div>
 {/if}
