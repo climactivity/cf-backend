@@ -31,7 +31,7 @@
 		opacity: var(--opacity, 1);
 		background-blend-mode: overlay;
 		background-size: 100%;
-		background-repeat: repeat;
+		background-repeat: no-repeat;
 		--background-color: rgba(255, 255, 255, 1);
 		height: 20rem;
 	}
@@ -47,7 +47,7 @@
 	}
 	.ws-gradient-top {
 		background-image: url('/warming_stripes.png'),
-			linear-gradient(var(--angle), var(--background-color) 50%, rgba(131, 58, 180, 0) 100%);
+			linear-gradient(var(--angle), var(--background-color) 70%, rgba(131, 58, 180, 0) 100%);
 	}
 
 	.ws-gradient-bottom {

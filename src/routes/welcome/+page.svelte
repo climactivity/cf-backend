@@ -41,8 +41,8 @@
 <style lang="scss">
 	.ws-gradient {
 		background-blend-mode: overlay;
-		background-size: 100%;
-		background-repeat: inherit;
+		background-size: cover;
+		background-repeat: no-repeat;
 		--background-color: rgba(255, 255, 255, 1);
 		--angle: -12deg;
 		height: 16rem;
