@@ -8,12 +8,14 @@
 </script>
 
 <TopSpacer/>
+<!--
 <CfSectionHeading>Highlights</CfSectionHeading>
 <div class="grid grid-flow-col">
     <AwardDisplay icon="fire" tint="300" title="5er Serie" achieved={true} reason="fünf aufeinander folgende Teilnahmen"/>
     <AwardDisplay icon="medal" tint="300" title="Frischling" achieved={true} reason="insgesamt zwei Teilnahmen" />
 
 </div>
+-->
 <CfSectionHeading>Awards</CfSectionHeading>
 <div>
     <div class="grid grid-flow-col overflow-x-scroll breakout snap-x">
@@ -34,9 +36,6 @@
     </div>
 </div>
 
-<div class="italic text-neutral-300">
-    *komplett fake, lol
-</div>
 <style>
     .breakout {
         margin:1em -100%; /* old browsers fallback */
