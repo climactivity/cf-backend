@@ -15,7 +15,9 @@
         await pb.collection("users").update(pb.authStore.model?.id,
             {
                 "notification_email": notification_email,
-                "notification_push": notification_push
+                "notification_push": notification_push,
+                "notification_setup": true
+
             }
         )
         updateSuccess = true;
@@ -60,14 +62,14 @@
                     <label for="push_notifications"> Push Benachrichtigungen aktivieren </label>
                     <input id="push_notifications" type="checkbox" bind:checked={notification_push}/>
                     <label for="push_notifications" class="col-span-2 text-sm text-neutral-900 text-opacity-90">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae reprehenderit quia iure.
+
                     </label>
                 </div>
                 <div>
                     <label for="email_notification"> E-Mail Benachrichtigungen aktivieren </label>
                     <input id="email_notification" type="checkbox" bind:checked={notification_email}/>
                     <label for="email_notification" class="col-span-2 text-sm text-neutral-900 text-opacity-90">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae reprehenderit quia iure.
+
                     </label>
                 </div>
             </fieldset>

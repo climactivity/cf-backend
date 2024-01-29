@@ -195,7 +195,7 @@
                In deiner Postleitzahl ({myRegion}) haben {count.count} Menschen beim <ClimateFriday/> mitgemacht.
             {/await}
             {:else}
-            pls set a region
+            Bitte gib eine Postleitzahl ein um zu sehen wievieke Menschen aus deiner Umgebung beim <ClimateFriday/> mitgemacht haben.
         {/if}
     </div>
 {/if}

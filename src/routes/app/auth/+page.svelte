@@ -29,7 +29,7 @@
 
 	<div class="flex flex-col mx-auto w-[16rem] py-4 gap-4">
 		<CfButton onclick={() => goto('/app/auth/withEmail')}>Mit Email anmelden</CfButton>
-		<CfButton onclick={() => goto('/app/auth/withApple')}>Mit Apple anmelden</CfButton>
-		<CfButton onclick={() => goto('/app/auth/withGoogle')}>Mit Google anmelden</CfButton>
+		<CfButton disabled onclick={() => goto('/app/auth/withApple')}>Mit Apple anmelden</CfButton>
+		<CfButton disabled onclick={() => goto('/app/auth/withGoogle')}>Mit Google anmelden</CfButton>
 	</div>
 </div>

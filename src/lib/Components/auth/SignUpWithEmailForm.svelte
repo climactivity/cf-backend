@@ -5,6 +5,9 @@
 	import CfButton from '../CFButton.svelte';
 	import logo from '$lib/Images/an_logo.png';
 	import { fade, fly } from 'svelte/transition';
+	import NotificationSettingsModal from '$lib/Components/NotificationSettingsModal.svelte';
+	import Modal from '$lib/Components/Modal.svelte';
+	import PrivacyThingModal from '$lib/Components/PrivacyThingModal.svelte';
 	let errors: ValidationErrors;
 	let message: string;
 	let identity: string;
@@ -30,8 +33,13 @@
 			if (await authData.token) {
 				goto('/app/');
 			}
-		} catch (e) {}
+		} catch (e) {
+			console.log(e)
+		}
 	};
+
+	let modal: Modal;
+
 </script>
 
 <div class="flex flex-col items-center mx-auto pb-8 gap-4">
@@ -112,13 +120,17 @@
 		</div>
 		<div class="py-4 w-[16rem]">
 			<input type="checkbox" id="privacy_policy" bind:checked={privacy_policy} />
-			<label for="privacy_policy"> Privacy thing </label>
+			<label for="privacy_policy"> <button class="underline" on:click={() => modal.show()}>Privacy thing</button> </label>
 		</div>
 		<div class="form-control w-[16rem] py-4 gap-4">
 			<CfButton onclick={() => signup()}>Account anlegen</CfButton>
 		</div>
 	</fieldset>
 </form>
+
+<Modal bind:this={modal}>
+	<PrivacyThingModal modal={modal} />
+</Modal>
 
 <style lang="scss">
 	// input[type='check-box'] {

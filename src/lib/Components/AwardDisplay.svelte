@@ -18,6 +18,7 @@
     let modal: Modal;
 
     $:dateStr = DateTime.fromSQL(date).toFormat('dd LLL.', {locale: "de"});
+
 </script>
 
 <button class="h-40 w-40 border-success-{tint} {achieved ? '' : 'border-neutral-500' }  border m-2 rounded-2xl grid grid-flow-row items-center justify-center"

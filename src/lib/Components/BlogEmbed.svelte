@@ -11,7 +11,7 @@
 		.then((res) => res.json())
 		.catch((error) => console.error(error));
 
-		const fetchPostsCapacitor = () => {
+	const fetchPostsCapacitor = async () => {
 		console.log('using capactior http...');
 		const options = {
 			url: postsEndpoint

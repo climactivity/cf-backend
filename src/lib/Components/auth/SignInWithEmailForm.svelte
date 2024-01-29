@@ -99,7 +99,7 @@
 	</fieldset>
 	<hr />
 	<div class="flex flex-col mx-auto w-[16rem] py-4 gap-4">
-		<CfButton secondary onclick={() => goto('/app/auth/withApple/')}>Mit Apple anmelden</CfButton>
-		<CfButton secondary onclick={() => goto('/app/auth/withGoogle/')}>Mit Google anmelden</CfButton>
+		<CfButton secondary disabled onclick={() => goto('/app/auth/withApple/')}>Mit Apple anmelden</CfButton>
+		<CfButton secondary disabled onclick={() => goto('/app/auth/withGoogle/')}>Mit Google anmelden</CfButton>
 	</div>
 </form>

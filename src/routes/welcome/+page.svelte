@@ -21,11 +21,11 @@
 	class="top-0 left-0 right-0 absolute px-6 pt-10 mx-auto text-lg flex flex-col gap-4 justify-center max-w-lg min-h-full h-screen"
 >
 	<div>
-		Schon {numberOfRegisteredUsers} sind beim #ClimateFriday dabei.
+		Schon <span class="font-bold"> <!-- {numberOfRegisteredUsers} --> ganz viele ;) </span>  sind beim <ClimateFriday/> dabei.
 	</div>
 
 	<div>
-		Wir zeigen freitags Flagge für Tempo und Gerechtigkeit beim Klimaschutz. Wir fordern dies von
+		Wir zeigen <b>freitags</b> Flagge für Tempo und Gerechtigkeit beim Klimaschutz. Wir fordern dies von
 		den Regierungen und sind selber dazu bereit.
 	</div>
 
