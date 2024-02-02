@@ -1,4 +1,4 @@
-interface Participation {
+export interface Participation {
   collectionId: string;
   collectionName: string;
   created: string;
@@ -11,7 +11,7 @@ interface Participation {
   weeknumber: number;
 }
 
-interface UserRecord {
+export interface UserRecord {
   avatar: string;
   collectionId: string;
   collectionName: string;
@@ -24,4 +24,7 @@ interface UserRecord {
   updated: string;
   username: string;
   verified: boolean;
+  notification_setup: boolean;
+  notification_push: boolean;
+  notification_email: boolean;
 }
