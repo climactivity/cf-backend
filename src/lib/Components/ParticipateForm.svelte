@@ -5,9 +5,10 @@
 	import Modal from './Modal.svelte';
 	import { fade } from 'svelte/transition';
 	import CongratulationModal from './CongratulationModal.svelte';
-	import type {Participation} from '$lib/types/collections';
+	import type { Participation } from '$lib/types/collections';
 	import { onMount } from 'svelte';
 	import { currentParticipation } from '$lib/Services/UserState';
+
 	export let congratulateModal: Modal;
 
 	let submitting = false;
@@ -148,3 +149,8 @@
 
 </form>
 
+{#if !congratulateModal}
+	<Modal bind:this={congratulateModal}>
+		<CongratulationModal />
+	</Modal>
+{/if}

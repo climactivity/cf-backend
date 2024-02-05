@@ -1,8 +1,8 @@
 <script lang="ts">
 
-    import CountUp from "$lib/Components/CountUp.svelte";
-    import CfSection from "$lib/Components/CFSection.svelte";
-    import {pb} from "$lib/Services/PocketbaseWrapper";
+    import CountUp from '$lib/Components/CountUp.svelte';
+    import CfSection from '$lib/Components/CFSection.svelte';
+    import { pb } from '$lib/Services/PocketbaseWrapper';
 
     const FAKE_STATS = false;
 
@@ -21,7 +21,7 @@
 
 <CfSection>
     {#await participantsLastFriday() then p}
-        <div>Teilnehmer:innen am letzten Freitag:<br/>
+			<div>Schon registrierte Teilnehmer:innen:<br />
             <CountUp number={p}/>
         </div>
     {/await}

@@ -6,7 +6,7 @@
 	import ParticipationCard from '$lib/Components/ParticipationCard.svelte';
 	import TopSpacer from '$lib/Components/TopSpacer.svelte';
 	import { currentUser, pb } from '$lib/Services/PocketbaseWrapper';
-	import { onMount } from 'svelte';
+	import { DateTime } from 'luxon';
 
 	let participations: Participation[] = [];
 
@@ -24,12 +24,16 @@
 		fetching = false;
 
 		const fetchedItems = _res.items as Participation[];
-		if (fetchedItems.length == 0) {
+		if (fetchedItems.length == 0 || fetchedItems.length <= PER_PAGE) {
 			endReached = true;
 		}
 		participations = [...participations, ...fetchedItems];
 		currentPage = currentPage + 1;
 	};
+
+	const startDate = DateTime.fromSQL($currentUser?.created).toFormat('dd-MM-yyyy');
+
+
 
 	// onMount(async () => {
 	// 	// let _res = await pb.collection('participations').getList(currentPage, PER_PAGE,{ sort: "-date" });
@@ -52,12 +56,16 @@
 			<ParticipationCard {participation} />
 		{/each}
 	</div>
+	{#if endReached}
+		<div class="bg-primary-800 text-white px-2 py-2 rounded-full font-bold text-center mb-8">
+			Am {startDate} hast du mit
+			<ClimateFriday invert />
+			angefangen!
+		</div>
+	{/if}
 	<IntersectionObserver onIntersect={fetchNextPage}>
-		{#if endReached}
-			<div class="bg-primary-800 text-white px-2 py-2 rounded-full font-bold text-center mb-8">
-				Hier hast du mit <ClimateFriday invert /> angefangen!
-			</div>
-		{:else}
+		{#if !endReached}
+
 			<div class="w-full flex flex-row justify-center">
 				<span class="loading loading-dots text-primary-500 text-center text-4xl" />
 			</div>
