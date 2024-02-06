@@ -5,6 +5,7 @@
 	import CFSectionHeading from '$lib/Components/CFSectionHeading.svelte';
 	import ClimateFriday from '$lib/Components/ClimateFriday.svelte';
 	import { fade } from 'svelte/transition';
+	import CFButton from '$lib/Components/CFButton.svelte';
 
 	let plz;
 	onMount(async () => {
@@ -32,8 +33,16 @@
 
 {#if !plz}
 	<div>
-		<span>ping</span>
-		<button on:click={() => modal.show()}>click</button>
+		<CFSectionHeading>Postleitzahl</CFSectionHeading>
+		<p>
+			Mach dein Postleitzahlengebiet zu einer starken
+			<ClimateFriday />
+			-Region und lass uns wissen wo du wohnst.
+		</p>
+		<div class="text-center ">
+			<CFButton transparent onclick={() => modal.show()}>Jetzt einrichten</CFButton>
+
+		</div>
 	</div>
 {/if}
 
@@ -43,9 +52,9 @@
 			Postleitzahl
 		</CFSectionHeading>
 		<p>
-			Bitte gib deine Postleitzahl ein damit wir sehen wo Menschen beim
+			Mach dein Postleitzahlengebiet zu einer starken
 			<ClimateFriday />
-			mitmachen
+			-Region und lass uns wissen wo du wohnst.
 		</p>
 		<label class="label" for="plz">
 			<span class="label-text">Postleitzahl</span>

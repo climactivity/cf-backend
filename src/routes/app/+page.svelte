@@ -15,11 +15,13 @@
 	});
 </script>
 
-<div class="h-36" />
+<div class="h-28" />
 
 <main class="flex flex-col gap-4">
-	<RegionSettingPrompt />
 	<FridayCountdown />
+
+	<RegionSettingPrompt />
+
 	<CfFridayInteraction />
 
 	<StatCTABlock />

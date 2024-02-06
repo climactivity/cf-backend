@@ -8,15 +8,15 @@
 	import CFButton from '$lib/Components/CFButton.svelte';
 	import Modal from '$lib/Components/Modal.svelte';
 	import CongratulationModal from '$lib/Components/CongratulationModal.svelte';
+
 	let changeParticipation = false;
 
 	currentParticipation.subscribe(_ => changeParticipation = false)
 	let congratulateModal: Modal;
 </script>
-
+<CfSectionHeading>Mitmachen</CfSectionHeading>
 {#if isFriday()}
 	<div>
-		<CfSectionHeading>Mitmachen</CfSectionHeading>
 
 		{#if $currentParticipation}
 			<div class="font-bold py-4"> Danke das Du diese Woche beim <ClimateFriday/> mitgemacht hast! </div>
