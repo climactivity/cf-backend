@@ -9,6 +9,7 @@
 	import EditSaveTextField from '$lib/Components/EditSaveTextField.svelte';
 	import { browser } from '$app/environment';
 	import { Capacitor } from '@capacitor/core';
+	import PrivacyThingModal from '$lib/Components/PrivacyThingModal.svelte';
 
 	let notification_email = false;
 	let notification_push = false;
@@ -72,7 +73,7 @@
 
 	let deleteAccountModal: Modal;
 	let changePasswordModal: Modal;
-
+	let ppmodal: Modal;
 </script>
 
 <TopSpacer />
@@ -140,7 +141,10 @@
 						</div>
 					</form>
 				</div>
-
+				<div>
+					<button class="underline my-10" on:click={ppmodal.show()}>Datenschutzerklärung ansehen
+					</button>
+				</div>
 				<div class="h-8" />
 
 
@@ -159,6 +163,9 @@
 Abmelden confirm dialog
 -->
 
+<Modal bind:this={ppmodal}>
+	<PrivacyThingModal modal={ppmodal} />
+</Modal>
 
 <Modal bind:this={changePasswordModal}>
 	<CfSectionHeading>Passwort ändern</CfSectionHeading>

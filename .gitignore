@@ -15,3 +15,9 @@ vite.config.ts.timestamp-*
 /pb_public
 
 *.exe
+/migrations/1706519665_updated_users.go
+/.idea/dataSources.local.xml
+/.idea/dataSources/f430d18c-535d-45e4-a9f2-dc8b12919ee4.xml
+/.idea/dataSources/f430d18c-535d-45e4-a9f2-dc8b12919ee4/storage_v2/_src_/schema/main.uQUzAA.meta
+/.idea/dataSources/f430d18c-535d-45e4-a9f2-dc8b12919ee4/storage_v2/_src_/schema/main.uQUzAA.zip
+/.idea/workspace.xml

@@ -6,6 +6,7 @@
 	import { currentUser } from '$lib/Services/PocketbaseWrapper';
 	import { onMount } from 'svelte';
 	import StatCTABlock from '$lib/Components/StatCTABlock.svelte';
+	import RegionSettingPrompt from '$lib/Components/RegionSettingPrompt.svelte';
 
 	onMount(async () => {
 		if (!$currentUser) {
@@ -17,6 +18,7 @@
 <div class="h-36" />
 
 <main class="flex flex-col gap-4">
+	<RegionSettingPrompt />
 	<FridayCountdown />
 	<CfFridayInteraction />
 

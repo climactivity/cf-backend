@@ -1,15 +1,20 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
 	import CfButton from '$lib/Components/CFButton.svelte';
 	import TopSpacer from '$lib/Components/TopSpacer.svelte';
 	import { pb } from '$lib/Services/PocketbaseWrapper';
 	import { onMount } from 'svelte';
+	import Modal from '$lib/Components/Modal.svelte';
+	import Imprint from '$lib/Components/Imprint.svelte';
+	import CFSectionHeading from '$lib/Components/CFSectionHeading.svelte';
 
 	onMount(async () => {
 		if (await pb.authStore.isValid) {
 			goto('/app');
 		}
 	});
+
+	let imprintModal: Modal;
 </script>
 
 <TopSpacer logo={true} />
@@ -32,4 +37,14 @@
 		<CfButton disabled onclick={() => goto('/app/auth/withApple')}>Mit Apple anmelden</CfButton>
 		<CfButton disabled onclick={() => goto('/app/auth/withGoogle')}>Mit Google anmelden</CfButton>
 	</div>
+
+	<span class="text-center text-sm text-neutral-800 underline mt-20"><button class="underline"
+																																						 on:click={imprintModal.show()}>Impressum</button></span>
 </div>
+
+<Modal bind:this={imprintModal}>
+	<div>
+		<CFSectionHeading>Impressum</CFSectionHeading>
+		<Imprint />
+	</div>
+</Modal>
