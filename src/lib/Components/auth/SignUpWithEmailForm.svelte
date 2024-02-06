@@ -4,10 +4,10 @@
 	import type { ValidationErrors } from '$lib/types/pb';
 	import CfButton from '../CFButton.svelte';
 	import logo from '$lib/Images/an_logo.png';
-	import { fade, fly } from 'svelte/transition';
-	import NotificationSettingsModal from '$lib/Components/NotificationSettingsModal.svelte';
+	import { fly } from 'svelte/transition';
 	import Modal from '$lib/Components/Modal.svelte';
 	import PrivacyThingModal from '$lib/Components/PrivacyThingModal.svelte';
+
 	let errors: ValidationErrors;
 	let message: string;
 	let identity: string;
@@ -16,11 +16,18 @@
 	let privacy_policy: boolean;
 
 	const signup = async () => {
+		errors = {};
 		try {
+			if (!password) {
+				errors['password'] = { code: 'PW_MISSING', message: 'Bitte gib ein Passwort ein' };
+				return;
+			}
 			if (password !== passwordConfirm) {
+				errors['password'] = { code: 'PW_MISSMATCH', message: 'Passwörter stimmen nicht überein' };
 				return;
 			}
 			if (!privacy_policy) {
+				errors['privacy_policy'] = { code: 'PRIVACY_NOT_ACCEPTED', message: 'Bitte nimm die privacy_policy an' };
 				return;
 			}
 			const result = await pb.collection('users').create({
@@ -121,6 +128,11 @@
 		<div class="py-4 w-[16rem]">
 			<input type="checkbox" id="privacy_policy" bind:checked={privacy_policy} />
 			<label for="privacy_policy"> <button class="underline" on:click={() => modal.show()}>Privacy thing</button> </label>
+			{#if errors && errors.privacy_policy}
+				<label class="label" for="email">
+					<span class="text-xs text-error-500 italic">*{errors.privacy_policy.message}</span>
+				</label>
+			{/if}
 		</div>
 		<div class="form-control w-[16rem] py-4 gap-4">
 			<CfButton onclick={() => signup()}>Account anlegen</CfButton>

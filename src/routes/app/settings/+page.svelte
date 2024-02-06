@@ -8,6 +8,7 @@
 	import Modal from '$lib/Components/Modal.svelte';
 	import EditSaveTextField from '$lib/Components/EditSaveTextField.svelte';
 	import { browser } from '$app/environment';
+	import { Capacitor } from '@capacitor/core';
 
 	let notification_email = false;
 	let notification_push = false;
@@ -89,14 +90,16 @@
 					<form>
 						<fieldset class="flex flex-col gap-4">
 							<legend class="sr-only"> Benachrichtigungseinstellungen</legend>
-							<div>
-								<label for="push_notifications"> Push Benachrichtigungen aktivieren </label>
-								<input id="push_notifications" type="checkbox" bind:checked={notification_push}
-											 on:click={saveNotificationSettings} />
-								<label for="push_notifications" class="col-span-2 text-sm text-neutral-900 text-opacity-90">
+							{#if Capacitor.isNativePlatform()}
+								<div>
+									<label for="push_notifications"> Push Benachrichtigungen aktivieren </label>
+									<input id="push_notifications" type="checkbox" bind:checked={notification_push}
+												 on:click={saveNotificationSettings} />
+									<label for="push_notifications" class="col-span-2 text-sm text-neutral-900 text-opacity-90">
 
-								</label>
-							</div>
+									</label>
+								</div>
+							{/if}
 							<div>
 								<label for="email_notification"> E-Mail Benachrichtigungen aktivieren </label>
 								<input id="email_notification" type="checkbox" bind:checked={notification_email}
@@ -106,10 +109,10 @@
 								</label>
 							</div>
 						</fieldset>
-						<button on:click={saveNotificationSettings}>
-							Speichern
-						</button>
-					</form>
+						<!--						<button on:click={saveNotificationSettings}>
+													Speichern
+												</button>
+						-->          </form>
 				</div>
 
 

@@ -28,8 +28,9 @@ collections:
 run-container:
 	docker-compose up --build -d
 
-build-container: 
+build-container:
+	npm run build
 	docker build . -f ./Dockerfile --tag $(DOCKER_TAG)
 
-push-container: build-container
+push-container:build-container
 	docker push $(DOCKER_TAG)

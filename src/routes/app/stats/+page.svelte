@@ -1,11 +1,11 @@
 <script>
-    import CfHeading from "$lib/Components/CFHeading.svelte";
-    import TopSpacer from "$lib/Components/TopSpacer.svelte";
-    import {page} from "$app/stores";
-    import {currentUser, pb} from "$lib/Services/PocketbaseWrapper";
-    import ClimateFriday from "$lib/Components/ClimateFriday.svelte";
-    import CFSectionHeading from "$lib/Components/CFSectionHeading.svelte";
-    import {onMount} from "svelte";
+    import CfHeading from '$lib/Components/CFHeading.svelte';
+    import TopSpacer from '$lib/Components/TopSpacer.svelte';
+    import { page } from '$app/stores';
+    import { pb } from '$lib/Services/PocketbaseWrapper';
+    import ClimateFriday from '$lib/Components/ClimateFriday.svelte';
+    import CFSectionHeading from '$lib/Components/CFSectionHeading.svelte';
+    import { onMount } from 'svelte';
 
     let fragment = ""
     let myRegion
@@ -20,10 +20,13 @@
 <TopSpacer/>
 <CfHeading>Ergebnisse</CfHeading>
 
-<div>
+<div class="my-4 font-bold text-lg ">
+
     <a href="#code">Meine PLZ</a>
-    <a href="#state">Umgebung</a>
-    <a href="#all">Alle</a>
+
+    <span class="text-neutral-500" href="#state">Umgebung</span>
+    <span class="text-neutral-500" href="#all">Alle</span>
+
 </div>
 
 {#if fragment === "#state"}
@@ -199,3 +202,5 @@
         {/if}
     </div>
 {/if}
+<span class="text-sm text-neutral-700 my-10 italic">Diese Seite ist noch sehr unfertig, hier könnt ihr später Details über die, hoffentlich, bremen- und dann bundesweite Nutzung der App finden.</span>
+<br />
