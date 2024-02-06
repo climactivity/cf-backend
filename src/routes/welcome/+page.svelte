@@ -35,7 +35,13 @@
 </main>
 
 <div class="fixed bottom-0 right-0 flex flex-row justify-end p-8">
-	<button class="bg-slate-50 px-8 py-4" on:click={() => goto('/app/auth/')}> Ich mach mit </button>
+	<button class="bg-slate-50 px-8 py-4 font-bold rounded-full flex gap-4 shadow-md" on:click={() => goto('/app/auth/')}>
+		Ich mach mit
+		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+				 class="w-6 h-6">
+			<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+		</svg>
+	</button>
 </div>
 
 <style lang="scss">

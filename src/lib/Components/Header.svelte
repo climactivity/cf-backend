@@ -51,7 +51,4 @@
 		}
 	}
 
-	.top-safe {
-		top: 24px;
-	}
 </style>

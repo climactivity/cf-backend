@@ -17,7 +17,7 @@
 {#if $menuOpen}
 	<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 	<div
-		class="fixed left-0 right-0 bottom-0 top-[6.75rem] bg-gray-900 bg-opacity-0 z-10"
+		class="fixed left-0 right-0 bottom-0 top-[5.25rem] bg-gray-900 bg-opacity-0 z-10"
 		on:click={closeMenu}
 		on:keypress={closeMenu}
 		role="complementary"
