@@ -1,7 +1,15 @@
 <script>
-	import Footer from '$lib/Components/Footer.svelte';
 	import Header from '$lib/Components/Header.svelte';
-	import { pb, currentUser } from '$lib/Services/PocketbaseWrapper';
+	import { currentUser, pb } from '$lib/Services/PocketbaseWrapper';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+
+	onMount(async () => {
+		console.log(pb.authStore.isValid);
+		if (!$currentUser || !pb.authStore.isValid) {
+			goto('/app/auth');
+		}
+	});
 </script>
 
 	<Header/>

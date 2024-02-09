@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { currentUser } from '$lib/Services/PocketbaseWrapper';
 	import { participationCount, streakCount } from '$lib/Services/UserState';
-
+	import { goto } from '$app/navigation';
 </script>
 
 {#if currentUser}
 	<div
 		class="sc shadow relative overflow-clip flex flex-row rounded-full border border-neutral-300 bg-neutral-50 px-2 py-1 text-lg w-40"
+		on:click={() => goto("/app/awards")}
 	>
 		<div class="flex flex-row justify-between items-center text-accent-500 ml-2 mr-4 gap-0 z-20">
 			<svg

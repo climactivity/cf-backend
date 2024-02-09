@@ -44,6 +44,8 @@ func sendEmailNotificationToUser(user *models.Record, template *template.Rendere
 	return app.NewMailClient().Send(message)
 }
 
+var htmlReminderMail = template.NewRegistry().LoadFiles("views/HTMLEmailReminderTemplate.html")
+
 func notifyEmailSubscribers(app *pocketbase.PocketBase) error {
 	records, err := app.Dao().FindRecordsByExpr(
 		"users",
@@ -54,12 +56,9 @@ func notifyEmailSubscribers(app *pocketbase.PocketBase) error {
 		log.Fatal(err)
 	}
 
-	htmlMail := template.NewRegistry().LoadFiles("views/HTMLEmailReminderTemplate.html")
-
 	for _, record := range records {
-		sendEmailNotificationToUser(record, htmlMail, app)
-		if err != nil {
-			log.Default().Println(err)
+		if err := sendEmailNotificationToUser(record, htmlReminderMail, app); err != nil {
+			ReportError(WARN, err)
 		}
 	}
 

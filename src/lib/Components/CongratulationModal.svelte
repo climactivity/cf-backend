@@ -1,17 +1,18 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
-  import { participationCount, streakCount } from '$lib/Services/UserState';
-	import CfButton from "./CFButton.svelte";
-	import ClimateFriday from "./ClimateFriday.svelte";
-  import { onMount } from 'svelte';
-  import { type Award, getNewAward } from '$lib/Services/awards';
+    import { goto } from '$app/navigation';
+    import { participationCount, streakCount } from '$lib/Services/UserState';
+    import CfButton from './CFButton.svelte';
+    import ClimateFriday from './ClimateFriday.svelte';
+    import { onMount } from 'svelte';
+    import { type Award, getNewAward } from '$lib/Services/awards';
 
 
-  let newAwardP: Award = getNewAward($participationCount, "p");
+    let newAwardP: Award = getNewAward($participationCount, "p");
   let newAwardS: Award = getNewAward($streakCount, "s");
 
   onMount(async () => {
-    console.log($participationCount, $streakCount);
+
+      console.log($participationCount, $streakCount);
   });
 
 </script>

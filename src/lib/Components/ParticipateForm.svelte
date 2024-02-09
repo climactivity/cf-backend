@@ -77,6 +77,7 @@
 		} finally {
 			submitting = false;
 		}
+
 	};
 
 
@@ -149,8 +150,6 @@
 
 </form>
 
-{#if !congratulateModal}
 	<Modal bind:this={congratulateModal}>
 		<CongratulationModal />
 	</Modal>
-{/if}

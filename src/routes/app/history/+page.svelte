@@ -7,6 +7,7 @@
 	import TopSpacer from '$lib/Components/TopSpacer.svelte';
 	import { currentUser, pb } from '$lib/Services/PocketbaseWrapper';
 	import { DateTime } from 'luxon';
+	import type { Participation } from '$lib/types/collections';
 
 	let participations: Participation[] = [];
 
@@ -32,15 +33,6 @@
 	};
 
 	const startDate = DateTime.fromSQL($currentUser?.created).toFormat('dd-MM-yyyy');
-
-
-
-	// onMount(async () => {
-	// 	// let _res = await pb.collection('participations').getList(currentPage, PER_PAGE,{ sort: "-date" });
-	// 	// participations = _res.items as Participation[]
-	// 	// console.log($currentUser);
-	// 	// console.log(participations);
-	// });
 </script>
 
 <TopSpacer />
@@ -50,7 +42,7 @@
 </div>
 <div>
 	<CfHeading>Verlauf</CfHeading>
-
+	<!-- TODO irgendwann mal: awards hier mit anzeigen -->
 	<div>
 		{#each participations as participation}
 			<ParticipationCard {participation} />

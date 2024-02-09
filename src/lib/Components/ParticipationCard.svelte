@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { optionToString } from '$lib/Util';
 	import { DateTime } from 'luxon';
+	import type { Participation } from '$lib/types/collections';
 
 	export let participation: Participation;
-	let dateLabel: string = DateTime.fromSQL(participation.date).toFormat('dd-MM');
+	let dateLabel: string = DateTime.fromSQL(participation.date).toFormat('dd.MM.YY');
 </script>
 
 <div style="grid-template-columns: 5rem 1fr;" class="grid grid-flow-col items-center py-2 linething relative">
