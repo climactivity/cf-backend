@@ -43,12 +43,3 @@
 </header>
 
 <svelte:window bind:scrollY={y} />
-
-<style>
-	@media (min-width: 480px) {
-		header {
-			padding: 12px 0;
-		}
-	}
-
-</style>
