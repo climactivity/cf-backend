@@ -1,11 +1,17 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { currentUser } from '$lib/Services/PocketbaseWrapper';
+	import { currentUser, pb } from '$lib/Services/PocketbaseWrapper';
 	import { onMount } from 'svelte';
 
 
 	onMount(() => {
 		console.log($currentUser);
+
+		if (!$currentUser || !pb.authStore.isValid) {
+			pb.authStore.clear();
+			goto('/welcome');
+		}
+
 		if ($currentUser) {
 			goto('/app');
 		} else {

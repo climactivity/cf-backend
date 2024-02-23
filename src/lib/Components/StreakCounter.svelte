@@ -6,7 +6,7 @@
 
 {#if currentUser}
 	<div
-		class="sc shadow relative overflow-clip flex flex-row rounded-full border border-neutral-300 bg-neutral-50 px-2 py-1 text-lg w-40"
+		class="sc shadow relative overflow-clip flex flex-row rounded-full border border-neutral-300 bg-neutral-50 px-2 py-1 text-lg w-40 cursor-pointer"
 		on:click={() => goto("/app/awards")}
 	>
 		<div class="flex flex-row justify-between items-center text-accent-500 ml-2 mr-4 gap-0 z-20">

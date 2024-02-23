@@ -7,6 +7,7 @@
 	onMount(async () => {
 		console.log(pb.authStore.isValid);
 		if (!$currentUser || !pb.authStore.isValid) {
+			pb.authStore.clear();
 			goto('/app/auth');
 		}
 	});

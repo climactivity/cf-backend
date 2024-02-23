@@ -4,6 +4,8 @@
     import AwardDisplay from '$lib/Components/AwardDisplay.svelte';
 
     import { participationCount, streakCount } from '$lib/Services/UserState';
+
+    //TODO datum mit laden
 </script>
 
 <TopSpacer/>

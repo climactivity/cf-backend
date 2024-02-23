@@ -66,7 +66,6 @@
 
 	const submit = async () => {
 		submitting = true;
-
 		try {
 			let _res = await postParticipation();
 			submitted = true;

@@ -1,12 +1,12 @@
 <script lang="ts">
-    import {DateTime} from 'luxon';
+    import { DateTime } from 'luxon';
 
     import Fire from '$lib/Components/fire.svelte';
     import Medal from '$lib/Components/medal.svelte';
 
     import fire_svg from '$lib/Images/fire.svg';
     import medal_svg from '$lib/Images/medal.svg';
-    import Modal from "$lib/Components/Modal.svelte";
+    import Modal from '$lib/Components/Modal.svelte';
 
     export let icon = "medal";
     export let title = "Awa awa";
@@ -55,7 +55,7 @@
                 {title}
             </div>
             <div class="text-center text-lg">
-                Erhalten am {dateStr} für {reason}
+                Verliehen für {reason}
             </div>
         {:else}
             <div class="mx-auto">
@@ -69,7 +69,7 @@
                 {title}
             </div>
             <div class="text-center text-lg">
-                Verliehen für {reason}
+                Wird verliehen für {reason}
             </div>
         {/if}
 
