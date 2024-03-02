@@ -26,7 +26,7 @@ setInterval(() => {
 
 export const isFriday = () => {
     //return false
-    return getDayOfWeek() === FRIDAY;
+    return getDayOfWeek() === FRIDAY || getDayOfWeek() === 6; //todo fix this
 }
 
 export const FRIDAY = 5;
