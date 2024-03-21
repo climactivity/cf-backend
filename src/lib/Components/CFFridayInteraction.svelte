@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isFriday } from '$lib/Services/TimerStore';
+	import { canSubmit } from '$lib/Services/TimerStore';
 	import CfSectionHeading from './CFSectionHeading.svelte';
 	import NotificationSettings from './NotificationSettings.svelte';
 	import ParticipateForm from './ParticipateForm.svelte';
@@ -15,7 +15,7 @@
 	let congratulateModal: Modal;
 </script>
 <CfSectionHeading>Mitmachen</CfSectionHeading>
-{#if isFriday()}
+{#if canSubmit()}
 	<div>
 
 		{#if $currentParticipation}

@@ -42,7 +42,7 @@
 		}
 	];
 
-	const postParticipation = async () => {
+	const postParticipationCompletion = async () => {
 		const weeknumber = DateTime.now().weekNumber
 		let participation: Partial<Participation> = {
 			date: DateTime.now().toHTTP() || undefined, // <- typescript, am I right?
@@ -67,7 +67,7 @@
 	const submit = async () => {
 		submitting = true;
 		try {
-			let _res = await postParticipation();
+			let _res = await postParticipationCompletion();
 			submitted = true;
 			console.log(_res);
 			congratulateModal.show();

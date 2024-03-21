@@ -7,7 +7,7 @@ const getCountdownValue = () => {
     const now = DateTime.now();
     const friday = DateTime.fromObject({
         weekYear: now.weekYear,
-        weekNumber: now.weekNumber,
+			weekNumber: getDayOfWeek() > 5 ? now.weekNumber : now.weekNumber + 1,
         weekday: FRIDAY,
         hour: START_TIME
     });
@@ -26,10 +26,17 @@ setInterval(() => {
 
 export const isFriday = () => {
     //return false
-    return getDayOfWeek() === FRIDAY || getDayOfWeek() === 6; //todo fix this
+	return getDayOfWeek() === FRIDAY;
+}
+
+export const canSubmit = () => {
+	const weekday = getDayOfWeek();
+	return weekday === FRIDAY || weekday === SATURDAY || weekday === SUNDAY;
 }
 
 export const FRIDAY = 5;
+export const SATURDAY = 6;
+export const SUNDAY = 7;
 export const START_TIME = 0;
 export const timeToNextFriday = writable(getCountdownValue());
 export const dayOfWeek = writable(getDayOfWeek());

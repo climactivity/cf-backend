@@ -71,7 +71,8 @@ func main() {
 	//add notification scheduler
 	app.OnBeforeServe().Add(handleNotifications(app))
 
-	// add custom routes
+	app.OnBeforeServe().Add(CurrentWeekHandler(app))
+
 	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
 		// serves static files from the provided public dir (if exists)
 		e.Router.GET("/*", serveCMS(os.DirFS(publicDirFlag), false))
@@ -80,12 +81,12 @@ func main() {
 	})
 
 	// loosely check if it was executed using "go run"
-	isGoRun := strings.HasPrefix(os.Args[0], os.TempDir())
+	// isGoRun := strings.HasPrefix(os.Args[0], os.TempDir())
 
 	migratecmd.MustRegister(app, app.RootCmd, migratecmd.Config{
 		// enable auto creation of migration files when making collection changes in the Admin UI
 		// (the isGoRun check is to enable it only during development)
-		Automigrate: isGoRun,
+		Automigrate: true,
 	})
 
 	if err := app.Start(); err != nil {
