@@ -1,5 +1,6 @@
 <script lang="ts">
-	import _logo from '$lib/Images/an_logo.png';
+	import _logo from '$lib/Images/LogoAGK.png';
+
 	export let logo = false;
 </script>
 

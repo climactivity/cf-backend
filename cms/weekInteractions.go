@@ -8,6 +8,7 @@ import (
 	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/models"
+	"github.com/pocketbase/pocketbase/tools/template"
 	"log"
 	"net/http"
 	"strconv"
@@ -27,6 +28,7 @@ const (
 const (
 	CollectionWeeks          string = "weeks"
 	CollectionParticipations string = "participations"
+	CollectionUsers          string = "users"
 )
 
 type WeekInfo struct {
@@ -35,15 +37,15 @@ type WeekInfo struct {
 	completionId string
 }
 
-// gets the current year and week (that is really all it does)
-func getCurrentYearWeek() (int, int) {
-	tn := time.Now().UTC()
-	year, week := tn.ISOWeek()
+// GetCurrentYearWeek gets the current year and week (that is really all it does)
+func GetCurrentYearWeek() (int, int) {
+	now := time.Now().UTC()
+	year, week := now.ISOWeek()
 	return year, week
 }
 
 func getCurrentWeekRecord(app *pocketbase.PocketBase, user *models.Record) (*models.Record, error) {
-	year, week := getCurrentYearWeek()
+	year, week := GetCurrentYearWeek()
 	return app.Dao().FindFirstRecordByFilter(
 		CollectionWeeks,
 		"year = {:year} && weeknumber = {:week} && owner = {:user}",
@@ -82,7 +84,7 @@ func handleGetCurrentWeek(app *pocketbase.PocketBase) func(c echo.Context) error
 }
 
 func initWeek(app *pocketbase.PocketBase, user *models.Record, remind bool) (*models.Record, error) {
-	year, week := getCurrentYearWeek()
+	year, week := GetCurrentYearWeek()
 
 	record, _ := getCurrentWeekRecord(app, user)
 	if record != nil {
@@ -99,10 +101,20 @@ func initWeek(app *pocketbase.PocketBase, user *models.Record, remind bool) (*mo
 	record.Set("weeknumber", week)
 	record.Set("owner", user.Id)
 
-	if remind {
-		record.Set("state", string(Remind))
+	now := time.Now().UTC()
+
+	day := now.Weekday()
+
+	if day == time.Friday {
+		record.Set("state", string(Pending))
+
 	} else {
-		record.Set("state", string(DontRemind))
+		if remind {
+			record.Set("state", string(Remind))
+		} else {
+			record.Set("state", string(DontRemind))
+		}
+
 	}
 
 	if err := app.Dao().SaveRecord(record); err != nil {
@@ -191,7 +203,7 @@ func handleCompleteWeek(app *pocketbase.PocketBase) func(c echo.Context) error {
 			return apis.NewBadRequestError("Something went wrong", err)
 		}
 
-		year, week := getCurrentYearWeek()
+		year, week := GetCurrentYearWeek()
 
 		participationRecord := models.NewRecord(participationsCollection)
 
@@ -234,17 +246,59 @@ func handleGetCompleteWeek(app *pocketbase.PocketBase) func(c echo.Context) erro
 
 func CurrentWeekHandler(app *pocketbase.PocketBase) func(e *core.ServeEvent) error {
 	return func(e *core.ServeEvent) error {
+
 		// init week -> "Ich bin diese Woche dabei!"
-		e.Router.GET("/currentweek", handleGetCurrentWeek(app))
-		e.Router.POST("/currentweek", handleInitWeek(app))
+		e.Router.GET("/api/currentweek", handleGetCurrentWeek(app))
+		e.Router.POST("/api/currentweek", handleInitWeek(app))
 
 		// complete week -> participated on a friday
-		e.Router.GET("/currentweek/completion", handleGetCompleteWeek(app))
-		e.Router.POST("/currentweek/completion", handleCompleteWeek(app))
+		e.Router.GET("/api/currentweek/completion", handleGetCompleteWeek(app))
+		e.Router.POST("/api/currentweek/completion", handleCompleteWeek(app))
 
-		// request reminder mails early for debug purposes
-		e.Router.POST("/currentweek/fridayReminder", handleCompleteWeek(app))
-		e.Router.POST("/currentweek/saturdayReminder", handleCompleteWeek(app))
+		return nil
+	}
+}
+
+func DebugHandler(app *pocketbase.PocketBase) func(e *core.ServeEvent) error {
+	return func(e *core.ServeEvent) error {
+		maild := app.NewMailClient()
+		registry := template.NewRegistry()
+
+		e.Router.POST("/api/debug/sentThursdayMail", func(c echo.Context) error {
+			admin, _ := c.Get(apis.ContextAdminKey).(*models.Admin)
+			if admin == nil {
+				return apis.NewForbiddenError("only admins can do this", nil)
+			}
+			EnqueueThursdayReminderMessages(app, maild, registry)
+			return c.NoContent(http.StatusOK)
+		})
+
+		e.Router.POST("/api/debug/sentSaturdayMail", func(c echo.Context) error {
+			admin, _ := c.Get(apis.ContextAdminKey).(*models.Admin)
+			if admin == nil {
+				return apis.NewForbiddenError("only admins can do this", nil)
+			}
+			EnqueueSaturdayReminderMessages(app, maild, registry)
+			return c.NoContent(http.StatusOK)
+		})
+
+		e.Router.POST("/api/debug/setFriday", func(c echo.Context) error {
+			admin, _ := c.Get(apis.ContextAdminKey).(*models.Admin)
+			if admin == nil {
+				return apis.NewForbiddenError("only admins can do this", nil)
+			}
+			SetFriday(app)
+			return c.NoContent(http.StatusOK)
+		})
+
+		e.Router.POST("/api/debug/setMissed", func(c echo.Context) error {
+			admin, _ := c.Get(apis.ContextAdminKey).(*models.Admin)
+			if admin == nil {
+				return apis.NewForbiddenError("only admins can do this", nil)
+			}
+			SetMissed(app)
+			return c.NoContent(http.StatusOK)
+		})
 
 		return nil
 	}

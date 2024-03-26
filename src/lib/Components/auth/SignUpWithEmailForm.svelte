@@ -3,7 +3,7 @@
 	import { pb } from '$lib/Services/PocketbaseWrapper';
 	import type { ValidationErrors } from '$lib/types/pb';
 	import CfButton from '../CFButton.svelte';
-	import logo from '$lib/Images/an_logo.png';
+	import logo from '$lib/Images/LogoAGK.png';
 	import { fly } from 'svelte/transition';
 	import Modal from '$lib/Components/Modal.svelte';
 	import PrivacyThingModal from '$lib/Components/PrivacyThingModal.svelte';

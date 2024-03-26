@@ -67,11 +67,15 @@ func main() {
 		defaultPublicDir(),
 		"the directory to serve static files",
 	)
+	// loosely check if it was executed using "go run"
+	isGoRun := strings.HasPrefix(os.Args[0], os.TempDir())
 
 	//add notification scheduler
-	app.OnBeforeServe().Add(handleNotifications(app))
+	app.OnBeforeServe().Add(HandleCronTasks(app))
 
 	app.OnBeforeServe().Add(CurrentWeekHandler(app))
+
+	app.OnBeforeServe().Add(DebugHandler(app))
 
 	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
 		// serves static files from the provided public dir (if exists)
@@ -80,13 +84,10 @@ func main() {
 		return nil
 	})
 
-	// loosely check if it was executed using "go run"
-	// isGoRun := strings.HasPrefix(os.Args[0], os.TempDir())
-
 	migratecmd.MustRegister(app, app.RootCmd, migratecmd.Config{
 		// enable auto creation of migration files when making collection changes in the Admin UI
 		// (the isGoRun check is to enable it only during development)
-		Automigrate: true,
+		Automigrate: isGoRun,
 	})
 
 	if err := app.Start(); err != nil {

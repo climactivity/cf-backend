@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { currentUser, pb } from '$lib/Services/PocketbaseWrapper';
+	import { pb } from '$lib/Services/PocketbaseWrapper';
 	import type { ValidationErrors } from '$lib/types/pb';
 	import CfButton from '../CFButton.svelte';
-	import logo from '$lib/Images/an_logo.png';
+	import logo from '$lib/Images/LogoAGK.png';
 	import { fly } from 'svelte/transition';
+
 	let identity: string;
 	let password: string;
 

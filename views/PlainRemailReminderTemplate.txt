@@ -1,0 +1,9 @@
+Hi,
+
+Auch diese Woche machen wieder viele Menschen beim #ClimateFriday mit.
+Bist Du diese Woche auch dabei?
+
+Viele Grüße,
+das #ClimateFriday-Team
+
+{{ .AppUrl }}
