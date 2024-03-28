@@ -1,6 +1,6 @@
-import { Capacitor } from "@capacitor/core";
-import PocketBase from "pocketbase"; 
-import { writable } from "svelte/store";
+import { Capacitor } from '@capacitor/core';
+import PocketBase from 'pocketbase';
+import { writable } from 'svelte/store';
 
 let pocketbaseUrl; 
 
@@ -22,5 +22,5 @@ pb.authStore.onChange(
 )
 
 export {
-    pb, currentUser
+    pb, currentUser, pocketbaseUrl
 }

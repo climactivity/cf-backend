@@ -10,30 +10,38 @@
 	import { browser } from '$app/environment';
 	import { Capacitor } from '@capacitor/core';
 	import PrivacyThingModal from '$lib/Components/PrivacyThingModal.svelte';
+	import type { UserRecord } from '$lib/types/collections';
+	import { defer } from '$lib/Util';
 
 	let notification_email = false;
 	let notification_push = false;
-
+	let user: UserRecord;
 	onMount(async () => {
-		notification_email = pb.authStore.model?.notification_email;
-		notification_push = pb.authStore.model?.notification_push;
+		user = await pb.collection('users').getOne(pb.authStore.model?.id);
+		console.log(user);
+		notification_email = user.notification_email;
+		notification_push = user.notification_push;
 	});
 
 	let updateSuccess = false;
 
 	const saveNotificationSettings = async () => {
-		console.log('sent');
-		console.log(pb.authStore.model?.id);
-		await pb.collection('users').update(pb.authStore.model?.id,
-			{
-				'notification_email': notification_email,
-				'notification_push': notification_push,
-				'notification_setup': true
+		await defer(async () => {
+			console.log('sent');
+			console.log(user.notification_email, notification_email);
+			await pb.collection('users').update(user.id,
+				{
+					'notification_email': notification_email,
+					'notification_push': notification_push,
+					'notification_setup': true
 
-			}
-		);
-		updateSuccess = true;
-		//modal.hide()
+				}
+			);
+			console.log(user.notification_email, notification_email);
+
+			updateSuccess = true;
+			//modal.hide()
+		})
 	};
 
 
@@ -46,7 +54,7 @@
 	};
 
 	const deleteAccount = async () => {
-		await pb.collection('demo').delete(pb.authStore.model?.id);
+		await pb.collection('users').delete(pb.authStore.model?.id);
 		pb.authStore.clear();
 		goto('/');
 	};
@@ -66,10 +74,6 @@
 		return value;
 	};
 
-	let userReccord;
-	onMount(async () => {
-		userReccord = pb.collection('users').getOne(pb.authStore.model?.id);
-	});
 
 	let deleteAccountModal: Modal;
 	let changePasswordModal: Modal;
@@ -83,10 +87,6 @@
 
 	<div>
 		{#if browser}
-			{#await userReccord}
-				<span class="loading loading-dots text-primary-500 text-center text-4xl" />
-
-			{:then user}
 				<div>
 					<form>
 						<fieldset class="flex flex-col gap-4">
@@ -153,7 +153,6 @@
 						löschen
 					</button>
 				</div>
-			{/await}
 		{/if}
 	</div>
 </div>

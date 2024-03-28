@@ -25,3 +25,6 @@ export const optionToString = (option: string) => {
     }
     return options[option] 
 }
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export const defer = async (f: Function) => setTimeout(f, 0);

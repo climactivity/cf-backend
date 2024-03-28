@@ -11,6 +11,21 @@ export interface Participation {
   weeknumber: number;
 }
 
+export interface Week {
+  FridayReminderSent: boolean;
+  SaturdayReminderSent: boolean;
+  collectionId: string;
+  collectionName: string;
+  completion: Participation;
+  created: string;
+  id: string;
+  owner: string;
+  state: string;
+  updated: string;
+  weeknumber: number;
+  year: number;
+}
+
 export interface UserRecord {
   avatar: string;
   collectionId: string;

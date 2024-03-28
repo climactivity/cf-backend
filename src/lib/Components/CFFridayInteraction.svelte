@@ -8,13 +8,18 @@
 	import CFButton from '$lib/Components/CFButton.svelte';
 	import Modal from '$lib/Components/Modal.svelte';
 	import CongratulationModal from '$lib/Components/CongratulationModal.svelte';
+	import { page } from '$app/stores';
 
 	let changeParticipation = false;
 
 	currentParticipation.subscribe(_ => changeParticipation = false)
 	let congratulateModal: Modal;
+
 </script>
 <CfSectionHeading>Mitmachen</CfSectionHeading>
+
+{#key $page.route.id}
+	<div on:load={console.log("hi")}></div>
 {#if canSubmit()}
 	<div>
 
@@ -40,3 +45,4 @@
 {:else}
 	<NotificationSettings />
 {/if}
+{/key}

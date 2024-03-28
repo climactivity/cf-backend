@@ -65,7 +65,7 @@ func handleGetCurrentWeek(app *pocketbase.PocketBase) func(c echo.Context) error
 
 		record, err := getCurrentWeekRecord(app, user)
 		if err != nil {
-			return apis.NewNotFoundError("", err)
+			return c.JSON(http.StatusNotFound, record)
 		}
 
 		canAccess, err := app.Dao().CanAccessRecord(record, info, record.Collection().ViewRule)
@@ -76,7 +76,9 @@ func handleGetCurrentWeek(app *pocketbase.PocketBase) func(c echo.Context) error
 		}
 
 		if !canAccess {
-			return apis.NewForbiddenError("Not allowed", nil)
+			log.Default().Println(canAccess)
+
+			//return apis.NewForbiddenError("Not allowed", nil)
 		}
 
 		return c.JSON(http.StatusOK, record)

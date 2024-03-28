@@ -5,6 +5,7 @@
 	import { pb } from '$lib/Services/PocketbaseWrapper';
 	import { onMount } from 'svelte';
 	import { Capacitor } from '@capacitor/core';
+	import { justSetupWeek, postCurrentWeek } from '$lib/Components/weekApi';
 
 	let notification_email = false;
 	let notification_push = false;
@@ -21,8 +22,11 @@
 
 			}
 		);
+		await postCurrentWeek();
+		justSetupWeek.set(true);
+
 		updateSuccess = true;
-		//modal.hide()
+
 	};
 	export let modal: Modal;
 	const markParticipateWithoutNotifications = () => {
