@@ -35,7 +35,7 @@
 {:else }
 
 	{#if $justSetupWeek}
-		<!--something fancier-->
+		<!--TODO something fancier-->
 		<span id="c3" class="font-bold text-lg">Danke, dass Du am nächsten Freitag dabei bist!</span>
 	{:else}
 		<CfButton onclick={() => setupWeek()}>Ich bin am nächsten Freitag dabei!</CfButton>

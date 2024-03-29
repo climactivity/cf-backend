@@ -152,8 +152,8 @@ func EnqueueSaturdayReminderMessages(app *pocketbase.PocketBase, maild mailer.Ma
 
 	template := NewEmailTemplate(
 		"Aktion GUTES KLIMA Erinnerung",
-		"views/HTMLEmailReminderTemplate.html",
-		"views/PlainEmailReminderTemplate.html",
+		"views/HTMLEmailSaturdayReminderTemplate.html",
+		"views/PlainEmailSaturdayReminderTemplate.txt",
 		registry,
 	)
 
@@ -175,7 +175,7 @@ func EnqueueThursdayReminderMessages(app *pocketbase.PocketBase, maild mailer.Ma
 	template := NewEmailTemplate(
 		"Aktion GUTES KLIMA Erinnerung",
 		"views/HTMLEmailReminderTemplate.html",
-		"views/PlainEmailReminderTemplate.html",
+		"views/PlainEmailReminderTemplate.txt",
 		registry,
 	)
 
