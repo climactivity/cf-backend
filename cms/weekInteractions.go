@@ -51,6 +51,7 @@ func getCurrentWeekRecord(app *pocketbase.PocketBase, user *models.Record) (*mod
 		"year = {:year} && weeknumber = {:week} && owner = {:user}",
 		dbx.Params{"year": strconv.Itoa(year), "week": strconv.Itoa(week), "user": user.Id},
 	)
+
 }
 
 // gets the currently active Week

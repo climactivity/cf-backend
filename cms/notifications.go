@@ -82,7 +82,7 @@ func getRecipientChunk(app *pocketbase.PocketBase, year int, week int) []*models
 	records, err := app.Dao().FindRecordsByFilter(
 		CollectionWeeks,
 		"year = {:year} && weeknumber = {:week}",
-		"desc",
+		"-weeknumber",
 		-1,
 		0,
 		dbx.Params{"year": strconv.Itoa(year), "week": strconv.Itoa(week)},

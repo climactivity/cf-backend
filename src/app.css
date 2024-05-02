@@ -5,6 +5,24 @@
 * {
 	--ws_angle: -12deg;
 	--x-pad: 1.5rem;
+
+    --global-color-primary: #0B4F77;
+    --global-color-secondary: #54595F;
+    --global-color-text: #000000;
+    --global-color-accent: #61CE70;
+    --global-color-lightgreen: #A6C536;
+    --global-color-darkblue: #0D5175;
+    --global-color-darkgreen: #257F46;
+    --global-color-mediumgreen: #6FAB44;
+    --global-typography-primary-font-family: "Roboto Slab";
+    --global-typography-primary-font-weight: 600;
+    --global-typography-secondary-font-family: "Roboto Slab";
+    --global-typography-secondary-font-weight: 400;
+    --global-typography-text-font-family: "Roboto Condensed";
+    --global-typography-text-font-size: 18px;
+    --global-typography-text-font-weight: 300;
+    --global-typography-accent-font-family: "Roboto Condensed";
+    --global-typography-accent-font-weight: 500;
 }
 
 html {

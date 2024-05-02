@@ -23,7 +23,8 @@
 		role="complementary"
 	>
 		<nav in:fly={{ x: -250, delay:75, duration:425, easing: cubicOut, opacity: 1 }}
-				 out:fly={{ x: -250, duration: 425, opacity: 1, easing: cubicIn}} class="h-full bg-neutral-50 shadow w-fit">
+				 out:fly={{ x: -250, duration: 425, opacity: 1, easing: cubicIn}}
+				 class="h-full bg-white border-black border-r shadow w-fit">
 			<ul>
 				<li class="text-2xl font-bold"><a href="/app/">Home</a></li>
 				<li class="text-2xl font-bold"><a href="/app/history">Verlauf</a></li>

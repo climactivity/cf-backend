@@ -25,7 +25,8 @@ export const postCurrentWeek = async () => {
 	}
 };
 
-export const currentWeek = writable<Week>(await getCurrentWeek());
+
+export const currentWeek = writable<Week>();
 // onMount(() => {
 //
 // 	currentWeekPromise = getCurrentWeek()
@@ -34,4 +35,10 @@ export const currentWeek = writable<Week>(await getCurrentWeek());
 //
 //
 // })
+async function fetchInitial() {
+	await currentWeek.set(await getCurrentWeek());
+}
+
+fetchInitial();
+
 export const justSetupWeek = writable(false);

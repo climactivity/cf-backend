@@ -1,11 +1,9 @@
 <script lang="ts">
-	import { menuOpen } from '$lib/Services/MenuState';
 	import { currentUser } from '$lib/Services/PocketbaseWrapper';
 	import { clamp, mapToRange } from '$lib/Util';
 	import MenuButton from './MenuButton.svelte';
 	import SideNavigationMenu from './SideNavigationMenu.svelte';
 	import StreakCounter from './StreakCounter.svelte';
-	import WarmingstripesBackground from './WarmingstripesBackground.svelte';
 
 	export let bgShadowOffset = 15.0;
 	export let bgOpacityStartOffset = 15.0;
@@ -20,11 +18,12 @@
 </script>
 
 <header class="h-12">
-	<WarmingstripesBackground adaptAngle opacity={1 - bgOpacity} />
+	<!--	<WarmingstripesBackground adaptAngle opacity={1 - bgOpacity} />-->
 	<div
+		style="background: var(--global-color-lightgreen); border-bottom: 1px black solid;"
 		class="fixed z-20
 	left-0 right-0 px-4 pt-5 pb-4 overflow-clip top-safe
-		{bgCastShadow || $menuOpen ? 'shadow-md' : ''}"
+		}"
 	>
 		<div
 			style="grid-template-columns: 5rem 1fr 10rem;"
@@ -36,7 +35,7 @@
 				<StreakCounter />
 			{/if}
 		</div>
-		<WarmingstripesBackground opacity={bgCastShadow ? 1 : 0} />
+		<!--		<WarmingstripesBackground opacity={bgCastShadow ? 1 : 0} />-->
 	</div>
 	<!-- <div class="h-24" /> -->
 	<SideNavigationMenu />

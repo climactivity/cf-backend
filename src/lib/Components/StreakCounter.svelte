@@ -6,7 +6,7 @@
 
 {#if currentUser}
 	<div
-		class="sc shadow relative overflow-clip flex flex-row rounded-full border border-neutral-300 bg-neutral-50 px-2 py-1 text-lg w-40 cursor-pointer"
+		class="sc shadow relative overflow-clip flex flex-row rounded-full border border-black bg-neutral-50 px-2 py-1 text-lg w-40 cursor-pointer"
 		on:click={() => goto("/app/awards")}
 	>
 		<div class="flex flex-row justify-between items-center text-accent-500 ml-2 mr-4 gap-0 z-20">
@@ -26,7 +26,7 @@
 			</svg>
 			<span class="text-neutral-900">{$streakCount}</span>
 		</div>
-		<div class="flex flex-row  items-center justify-end text-white ml-6 mr-3 gap-0.5 bg-primary-500 z-20">
+		<div class="flex flex-row  items-center justify-end text-white ml-6 mr-3 gap-0.5 z-20">
 			<svg
 				width="26"
 				height="24"
@@ -51,7 +51,8 @@
 		--diag: 2.5%;
 	}
 	.sc::after {
-		@apply absolute inset-0 bg-primary-500 z-10;
+    @apply absolute inset-0 z-10;
+    background: var(--global-color-darkgreen);
 		content: '';
 		clip-path: polygon(
 			calc(50% - var(--diag)) 0%,
